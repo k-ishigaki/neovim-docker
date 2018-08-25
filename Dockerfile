@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # install docker client
-RUN curl -fsSL https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
+ENV DOCKERVERSION=18.06.1-ce
+RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
     | tar -xzC /usr/local/bin --strip=1 docker/docker
 
 # install neovim environment
