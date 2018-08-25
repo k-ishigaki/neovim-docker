@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # install docker client
-ENV DOCKER_CLIENT_VERSION=1.12.3
 RUN curl -fsSL https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
     | tar -xzC /usr/local/bin --strip=1 docker/docker
 
