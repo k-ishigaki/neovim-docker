@@ -22,3 +22,5 @@ RUN pip3 install --upgrade neovim pip \
     && cd dotfiles && make \
     # install plugins and exit
     && nvim +UpdateRemotePlugins +qa
+
+ENV PATH $PATH:/root/workspace
