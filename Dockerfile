@@ -1,6 +1,10 @@
 FROM ubuntu
 MAINTAINER k-ishigaki <k-ishigaki@frontier.hokudai.ac.jp>
 
+# for neovim language client(optional)
+ARG cmds='ccls:ccls hie:hie'
+
+# install requirements
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
@@ -37,5 +41,11 @@ RUN pip3 install --upgrade neovim pip \
     && cd dotfiles && make \
     # install plugins and exit
     && nvim +UpdateRemotePlugins +qa
+
+# prepare binaries
+COPY ./generate_docker_cmd .
+RUN mkdir -p ~/.local/bin \
+    && chmod +x generate_docker_cmd \
+    && ./generate_docker_cmd ${cmds}
 
 ENV PATH $PATH:/root/.local/bin
