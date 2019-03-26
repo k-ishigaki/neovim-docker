@@ -6,15 +6,30 @@ RUN apt-get update && apt-get install -y \
     curl \
     git \
     make \
-    neovim \
     python3-dev \
     python3-pip \
     && apt-get clean
+
+RUN curl -fsSLO https://github.com/AppImage/AppImageKit/releases/download/9/appimagetool-x86_64.AppImage \
+    && chmod +x ./appimagetool-x86_64.AppImage \
+    && ./appimagetool-x86_64.AppImage --appimage-extract \
+    && rm -rf squashfs-root/
+
+# install neovim
+RUN curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
+    && chmod u+x nvim.appimage \
+    && ./nvim.appimage --appimage-extract
+
+ENV PATH $PATH:/squashfs-root/usr/bin
 
 # install docker client
 ENV DOCKERVERSION=18.06.1-ce
 RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
     | tar -xzC /usr/local/bin --strip=1 docker/docker
+
+# install docker compose
+RUN curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+    && chmod +x /usr/local/bin/docker-compose
 
 # install neovim environment
 RUN pip3 install --upgrade neovim pip \
@@ -23,4 +38,4 @@ RUN pip3 install --upgrade neovim pip \
     # install plugins and exit
     && nvim +UpdateRemotePlugins +qa
 
-ENV PATH $PATH:/root/workspace
+ENV PATH $PATH:/root/.local/bin
