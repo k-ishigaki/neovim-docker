@@ -31,11 +31,6 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sL install-node.now.sh/lts | sh -s -- -f \
     && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh -s -- -f
 
-RUN curl -fsSLO https://github.com/AppImage/AppImageKit/releases/download/9/appimagetool-x86_64.AppImage \
-    && chmod +x ./appimagetool-x86_64.AppImage \
-    && ./appimagetool-x86_64.AppImage --appimage-extract \
-    && rm -rf squashfs-root/
-
 # install neovim
 RUN curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
     && chmod u+x nvim.appimage \
