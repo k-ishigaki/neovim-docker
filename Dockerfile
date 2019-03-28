@@ -44,10 +44,6 @@ ENV DOCKERVERSION=18.06.3-ce
 RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
     | tar -xzC /usr/local/bin --strip=1 docker/docker
 
-# install docker compose
-RUN curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
-    && chmod +x /usr/local/bin/docker-compose
-
 # install neovim environment
 RUN pip3 install --upgrade neovim pip \
     && git clone https://github.com/k-ishigaki/dotfiles \
