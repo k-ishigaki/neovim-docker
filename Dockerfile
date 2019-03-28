@@ -27,7 +27,7 @@ RUN curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.app
 ENV PATH $PATH:/squashfs-root/usr/bin
 
 # install docker client
-ENV DOCKERVERSION=18.06.1-ce
+ENV DOCKERVERSION=18.06.3-ce
 RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
     | tar -xzC /usr/local/bin --strip=1 docker/docker
 
