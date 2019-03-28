@@ -21,11 +21,15 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     git \
+    language-pack-ja \
     make \
     python3-dev \
     python3-pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# for displaying Japanese launguage
+ENV LANG ja_JP.utf8
 
 # for coc.nvim
 RUN curl -sL install-node.now.sh/lts | sh -s -- -f \
