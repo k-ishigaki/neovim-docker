@@ -66,6 +66,6 @@ RUN mkdir -p ~/.config/coc
 COPY ./generate_docker_cmd .
 RUN mkdir -p ~/.local/bin \
     && chmod +x generate_docker_cmd \
-    && ./generate_docker_cmd ${cmds}
+    && ./generate_docker_cmd ${cmds} && rm -rf ./generate_docker_cmd
 
 ENV PATH $PATH:/root/.local/bin
