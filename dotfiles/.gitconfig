@@ -1,0 +1,7 @@
+[user]
+	useConfigOnly = true
+[core]
+	autoCRLF = input
+	editor = nvim -c \"set fenc=utf-8\"
+[color]
+	ui = auto

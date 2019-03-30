@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/k-ishigaki/dotfiles
+	branch = master
+	commit = 4c93275e0a4b1c49cd2a7e2515c9922813f2e71b
+	parent = 97954d3da84ba0c3b74330546abea8f74a36e7d9
+	method = merge
+	cmdver = 0.4.0

@@ -1,0 +1,36 @@
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+build='./install.sh'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'sudar/vim-arduino-syntax'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  let g:NERDTreeWinSize=26
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-indent'
+
+[[plugins]]
+repo = 'neovimhaskell/haskell-vim'
+hook_add = '''
+  let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+  let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+  let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+  let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+  let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+  let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+  let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+'''
