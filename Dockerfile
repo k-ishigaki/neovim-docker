@@ -53,9 +53,9 @@ RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-${D
     | tar -xzC /usr/local/bin --strip=1 docker/docker
 
 # install neovim environment
+COPY ./dotfiles/ /root/.cache/dotfiles
 RUN pip3 install --upgrade neovim pip \
-    && git clone https://github.com/k-ishigaki/dotfiles \
-    && cd dotfiles && make \
+    && cd ~/.cache/dotfiles/ && make \
     # install plugins and exit
     && nvim +UpdateRemotePlugins +qa --headless
 
