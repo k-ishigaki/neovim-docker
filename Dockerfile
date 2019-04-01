@@ -9,13 +9,6 @@ ARG cmds='ccls:ccls hie:hie'
 RUN echo 'dash dash/sh boolean false' | debconf-set-selections \
     && dpkg-reconfigure -f noninteractive -plow dash
 
-# for add-apt-repository
-RUN apt-get update && apt-get install -y \
-    software-properties-common
-
-# for latest git
-RUN add-apt-repository ppa:git-core/ppa -y
-
 # install requirements
 RUN apt-get update && apt-get install -y \
     build-essential \
