@@ -11,7 +11,6 @@ RUN echo 'dash dash/sh boolean false' | debconf-set-selections \
 
 # install requirements
 RUN apt-get update && apt-get install -y \
-    build-essential \
     curl \
     git \
     language-pack-ja \
