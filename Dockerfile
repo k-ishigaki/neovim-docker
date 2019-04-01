@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER k-ishigaki <k-ishigaki@frontier.hokudai.ac.jp>
+LABEL maintainer="Kazuki Ishigaki<k-ishigaki@frontier.hokudai.ac.jp>"
 
 # for neovim language client(optional)
 ARG cmds='ccls:ccls hie:hie'
