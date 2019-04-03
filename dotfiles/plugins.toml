@@ -3,6 +3,9 @@ repo = 'neoclide/coc.nvim'
 build='./install.sh'
 
 [[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
 repo = 'Shougo/neoinclude.vim'
 
 [[plugins]]
