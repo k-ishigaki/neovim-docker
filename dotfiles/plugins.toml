@@ -1,6 +1,10 @@
 [[plugins]]
 repo = 'neoclide/coc.nvim'
-build='./install.sh'
+merged = '0'
+build = './install.sh nightly'
+hook_add = '''
+  let g:coc_global_extensions = ['coc-json', 'coc-snippets']
+'''
 
 [[plugins]]
 repo = 'honza/vim-snippets'

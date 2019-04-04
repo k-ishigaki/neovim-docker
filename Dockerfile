@@ -30,6 +30,7 @@ ENV LANG ja_JP.utf8
 # for coc.nvim
 RUN curl -sL install-node.now.sh/lts | sh -s -- -f \
     && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh -s -- -f
+ENV PATH $PATH:/root/.yarn/bin
 
 # install neovim
 RUN curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
