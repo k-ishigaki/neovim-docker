@@ -4,19 +4,20 @@ function output_cmd () {
     local arg=( `echo $1 | tr -s ':' ' '`)
     if [ ${#arg[@]} -ne 2 ]; then
         echo 'argument format is not correct!' 1>&2
-        echo 'format="container_name:command_name"' 1>&2
+        echo 'format="container_name:command_path"' 1>&2
         exit 1
     fi
     local container_name=${arg[0]}
-    local command_name=${arg[1]}
-    echo 'docker exec -i --workdir $(pwd) '"${container_name} ${command_name}"' "$@"' > ~/.local/bin/${command_name}
+    local command_path=${arg[1]}
+    local command_name=`basename ${arg[1]}`
+    echo 'docker exec -i --workdir $(pwd) '"${container_name} ${command_path}"' "$@"' > ~/.local/bin/${command_name}
     chmod +x ~/.local/bin/${command_name}
 }
 
 if [ $# -eq 0 ]; then
     echo 'no arguments is specified!' 1>&2
     script_name=${0##*/}
-    echo 'usage="'"${script_name}"' container_name1:command_name1 container_name2:command_name2 ..."' 1>&2
+    echo 'usage="'"${script_name}"' container_name1:command_path1 container_name2:command_path2 ..."' 1>&2
     exit 1
 fi
 
