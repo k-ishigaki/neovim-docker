@@ -163,5 +163,8 @@ function! s:show_documentation()
     endif
 endfunction
 
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
 " Required:
 filetype plugin indent on
