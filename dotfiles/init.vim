@@ -25,7 +25,7 @@ endif
 set background=dark
 
 " カラースキーマ設定
-colorscheme railscasts
+colorscheme iceberg
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
