@@ -14,6 +14,13 @@ repo = 'Shougo/neoinclude.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+let g:lightline = {
+    \ 'active': {
+        \ 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'relativepath', 'modified' ] ],
+        \ }
+    \ }
+'''
 
 [[plugins]]
 repo = 'sudar/vim-arduino-syntax'
