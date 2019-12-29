@@ -7,6 +7,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'dense-analysis/ale'
+
+[[plugins]]
 repo = 'honza/vim-snippets'
 
 [[plugins]]
