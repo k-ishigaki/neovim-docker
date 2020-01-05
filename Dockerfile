@@ -10,7 +10,8 @@ RUN echo 'dash dash/sh boolean false' | debconf-set-selections \
     && dpkg-reconfigure -f noninteractive -plow dash
 
 # install requirements
-RUN apt-get update && apt-get install -y \
+RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list \
+    && apt-get update && apt-get install -y \
     curl \
     git \
     language-pack-ja \
