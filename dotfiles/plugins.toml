@@ -29,6 +29,9 @@ let g:lightline = {
 repo = 'sudar/vim-arduino-syntax'
 
 [[plugins]]
+repo = 'tokorom/vim-review'
+
+[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
   let g:NERDTreeWinSize=26
