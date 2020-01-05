@@ -61,6 +61,7 @@ set imsearch=-1		" 検索時のデフォルト値 -1:equal to iminsert
 set formatoptions+=r	" 挿入モード時，Enter押下でコメントを自動挿入する
 set formatoptions-=o	" 'o','O'でのコメントを自動挿入しない
 set formatoptions-=t	" 自動折り返しをしないようにする
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set fileformats=unix,mac,dos " enable automatically detection for existing file
 set fileformat=unix	" set default fileformat to unix line endings
 set noundofile		" undoファイルを作成しない
