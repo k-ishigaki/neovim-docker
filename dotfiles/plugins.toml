@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
 repo = 'neoclide/coc.nvim'
 merged = '0'
 build = './install.sh nightly'
