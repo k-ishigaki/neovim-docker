@@ -13,6 +13,8 @@ COLORSCHEME_VIM := $(PWD)/iceberg.vim
 COLORSCHEME_DIR := ~/.config/nvim/colors/
 GITCONFIG_FILE := $(PWD)/.gitconfig
 GITCONFIG_DIR := ~/
+TMUX_CONFIG_FILE := $(PWD)/.tmux.conf
+TMUX_CONFIG_DIR := ~/
 
 # install
 .PHONY: install
@@ -24,3 +26,4 @@ install:
 	$(foreach f, $(PLUGIN_TOMLS), $(call make-link,$(f),$(PLUGIN_DIR)))
 	$(call make-link,$(GITCONFIG_FILE),$(GITCONFIG_DIR))
 	$(call make-link,$(COLORSCHEME_VIM),$(COLORSCHEME_DIR))
+	$(call make-link,$(TMUX_CONFIG_FILE),$(TMUX_CONFIG_DIR))

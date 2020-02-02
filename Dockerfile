@@ -18,6 +18,7 @@ RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.l
     make \
     python3-dev \
     python3-pip \
+    tmux \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
