@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'tpope/vim-obsession'
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
