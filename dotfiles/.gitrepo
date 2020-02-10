@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/k-ishigaki/dotfiles
 	branch = master
-	commit = fe51a4182a435f11c73e738fea5986db4d6d299a
+	commit = 474a3768dfbdd5170f6c02984bf967abf66f8e81
 	parent = 5d766eb12c629d219c35c7686db29edf64089316
 	method = merge
-	cmdver = 0.4.0
+	cmdver = 0.4.1
