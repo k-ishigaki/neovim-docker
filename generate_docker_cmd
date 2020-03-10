@@ -10,7 +10,7 @@ function output_cmd () {
     local container_name=${arg[0]}
     local command_path=${arg[1]}
     local command_name=`basename ${arg[1]}`
-    echo 'docker exec -i --workdir $(pwd) '"${container_name} ${command_path}"' "$@"' > ~/.local/bin/${command_name}
+    echo 'sudo docker exec -i --workdir $(pwd) '"${container_name} ${command_path}"' "$@"' > ~/.local/bin/${command_name}
     chmod +x ~/.local/bin/${command_name}
 }
 
