@@ -7,7 +7,7 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merged = '0'
-build = './install.sh nightly'
+rev = 'release'
 hook_add = '''
   let g:coc_global_extensions = ['coc-json', 'coc-snippets']
 '''
