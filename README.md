@@ -5,7 +5,7 @@ Alpine base image, includes dein.nvim, coc.nvim, etc.
 
 ## Features
 
- * Changerable uid/gid when running container
+ * changeable uid/gid when running container
  * Plugins embedded (using dein.nvim)
 
 ## Requirements
