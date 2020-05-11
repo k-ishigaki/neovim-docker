@@ -37,3 +37,6 @@ RUN { \
 	echo 'exec su-exec ${USER_ID}:${GROUP_ID} "$@"'; \
 	} > /entrypoint && chmod +x /entrypoint
 ENTRYPOINT [ "/entrypoint" ]
+
+# Enable displaying Japanese Language
+ENV LANG ja_JP.utf8
