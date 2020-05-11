@@ -38,5 +38,5 @@ RUN { \
 	} > /entrypoint && chmod +x /entrypoint
 ENTRYPOINT [ "/entrypoint" ]
 
-# Enable displaying Japanese Language
+# Enable displaying Japanese
 ENV LANG ja_JP.utf8
