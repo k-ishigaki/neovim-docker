@@ -20,6 +20,7 @@ RUN find ${HOME} | xargs -n 50 -P 4 chmod o+rwx
 FROM alpine
 LABEL maintainer="Kazuki Ishigaki<k-ishigaki@frontier.hokudai.ac.jp>"
 
+ARG EXTRA_PACKAGES
 RUN apk add --no-cache neovim neovim-doc npm python3 su-exec ${EXTRA_PACKAGES}
 
 COPY --from=builder /root /root
