@@ -13,6 +13,12 @@ COPY dotfiles/lazy.toml .
 RUN pip3 install --user --no-cache-dir pynvim && \
     nvim +UpdateRemotePlugins +qa --headless
 
+RUN mkdir -p ~/.config/coc/extensions
+WORKDIR /root/.config/coc/extensions
+ARG EXTRA_COC_PLUGINS=""
+RUN echo '{"dependencies":{}}'> package.json && \
+    npm install coc-json coc-snippets ${EXTRA_COC_PLUGINS} --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+
 RUN find ${HOME} | xargs -n 50 -P 4 chmod o+rwx
 
 FROM alpine
