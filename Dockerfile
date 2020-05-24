@@ -1,5 +1,3 @@
-ARG EXTRA_PACKAGES="git"
-
 FROM alpine as builder
 
 RUN apk add --no-cache git gcc musl-dev neovim npm python3 python3-dev
@@ -20,8 +18,7 @@ RUN find ${HOME} | xargs -n 50 -P 4 chmod o+rwx
 FROM alpine
 LABEL maintainer="Kazuki Ishigaki<k-ishigaki@frontier.hokudai.ac.jp>"
 
-ARG EXTRA_PACKAGES
-RUN apk add --no-cache neovim neovim-doc npm python3 su-exec ${EXTRA_PACKAGES}
+RUN apk add --no-cache git neovim neovim-doc npm python3 su-exec
 
 COPY --from=builder /root /root
 RUN chmod o+rwx /root
