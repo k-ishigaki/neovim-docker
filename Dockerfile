@@ -13,7 +13,6 @@ COPY dotfiles/lazy.toml .
 RUN pip3 install --user --no-cache-dir pynvim && \
     nvim +UpdateRemotePlugins +qa --headless
 
-RUN mkdir -p ~/.config/coc/extensions
 WORKDIR /root/.config/coc/extensions
 ARG EXTRA_COC_PLUGINS=""
 RUN echo '{"dependencies":{}}'> package.json && \
