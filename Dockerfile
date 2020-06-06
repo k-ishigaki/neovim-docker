@@ -1,4 +1,4 @@
-FROM alpine as builder
+FROM alpine:3.11 as builder
 
 RUN apk add --no-cache git gcc musl-dev neovim npm python3 python3-dev
 
@@ -20,7 +20,7 @@ RUN echo '{"dependencies":{}}'> package.json && \
 
 RUN find ${HOME} | xargs -n 50 -P 4 chmod o+rwx
 
-FROM alpine
+FROM alpine:3.11
 LABEL maintainer="Kazuki Ishigaki<k-ishigaki@frontier.hokudai.ac.jp>"
 
 RUN apk add --no-cache git neovim neovim-doc npm python3 su-exec
