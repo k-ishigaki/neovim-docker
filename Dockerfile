@@ -1,6 +1,6 @@
-FROM alpine:3.11 as builder
+FROM alpine as builder
 
-RUN apk add --no-cache git gcc musl-dev neovim npm python3 python3-dev
+RUN apk add --no-cache git gcc musl-dev neovim npm python3 python3-dev py3-pip
 
 WORKDIR /root/.config/nvim
 COPY dotfiles/init.vim .
@@ -20,23 +20,24 @@ RUN echo '{"dependencies":{}}'> package.json && \
 
 RUN find ${HOME} | xargs -n 50 -P 4 chmod o+rwx
 
-FROM alpine:3.11
+FROM alpine
 LABEL maintainer="Kazuki Ishigaki<k-ishigaki@frontier.hokudai.ac.jp>"
 
-RUN apk add --no-cache git neovim neovim-doc npm python3 su-exec
+RUN apk add --no-cache git neovim neovim-doc npm python3 py3-pip shadow sudo
 
 COPY --from=builder /root /root
-RUN chmod o+rwx /root
 
-ENV USER_ID 0
-ENV GROUP_ID 0
-RUN { \
+RUN echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/developer && \
+    chmod u+s `which groupadd` `which useradd` && \
+    { \
     echo '#!/bin/sh -e'; \
-    echo 'getent group ${GROUP_ID} || addgroup --gid ${GROUP_ID} group'; \
-    echo 'getent passwd ${USER_ID} || adduser --uid ${USER_ID} --disabled-password --ingroup `getent group ${GROUP_ID} | cut -d: -f1` --home /root user'; \
-    echo 'exec su-exec ${USER_ID}:${GROUP_ID} "$@"'; \
+    echo 'getent group `id -g` || groupadd --gid `id -g` developer'; \
+    echo 'getent passwd `id -u` || useradd --uid `id -u` --gid `id -g` --home-dir /root developer'; \
+    echo 'sudo chown --recursive `id -u`:`id -g` /root'; \
+    echo 'exec "$@"'; \
     } > /entrypoint && chmod +x /entrypoint
 ENTRYPOINT [ "/entrypoint" ]
+ENV HOME=/root
 
 # Enable displaying Japanese
 ENV LANG ja_JP.utf8
