@@ -41,6 +41,7 @@ repo = 'tokorom/vim-review'
 repo = 'scrooloose/nerdtree'
 hook_add = '''
   let g:NERDTreeWinSize=26
+  let g:NERDTreeShowHidden=1
 '''
 
 [[plugins]]
