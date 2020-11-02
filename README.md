@@ -23,5 +23,5 @@ docker build -t k-ishigaki/neovim .
 ## Run
 
 ```Shell
-docker run --rm -it -v $(pwd):/tmp -w /tmp -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) k-ishigaki/neovim nvim ...
+docker run --rm -it -v $(pwd):/tmp -w /tmp -u $(id -u):$(id -g) k-ishigaki/neovim nvim ...
 ```
