@@ -33,7 +33,7 @@ RUN echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/developer && \
     echo '#!/bin/sh -e'; \
     echo 'getent group `id -g` || groupadd --gid `id -g` developer'; \
     echo 'getent passwd `id -u` || useradd --uid `id -u` --gid `id -g` --home-dir /root developer'; \
-    echo 'sudo chown --recursive `id -u`:`id -g` /root'; \
+    echo 'find /root -maxdepth 1 | xargs sudo chown `id -u`:`id -g`'; \
     echo 'exec "$@"'; \
     } > /entrypoint && chmod +x /entrypoint
 ENTRYPOINT [ "/entrypoint" ]
