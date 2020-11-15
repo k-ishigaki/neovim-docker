@@ -97,32 +97,38 @@ augroup MyAutoCmd
   autocmd!
 augroup end
 
-" dein settings {{{
-" dein自体の自動インストール
-let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let s:dein_dir = s:cache_home . '/dein'
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-if !isdirectory(s:dein_repo_dir)
-  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-endif
-let &runtimepath = s:dein_repo_dir . "," . &runtimepath
-" プラグイン読み込み＆キャッシュ作成
-let s:plugins_toml = s:dein_dir . '/plugins.toml'
-let s:lazy_toml = s:dein_dir . '/lazy.toml'
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir, [$MYVIMRC, s:plugins_toml, s:lazy_toml])
-  call dein#load_toml(s:plugins_toml, {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  call dein#end()
-  call dein#save_state()
-endif
-" 不足プラグインの自動インストール
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
-" }}}
+" Plugins
+call plug#begin(stdpath('data') . '/plugged')
 
-" 以下にプラグインのその他の設定を書く
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-fugitive'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+    \ 'active': {
+        \ 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'relativepath', 'modified' ] ],
+        \ }
+    \ }
+Plug 'sudar/vim-arduino-syntax'
+Plug 'tokorom/vim-review'
+Plug 'scrooloose/nerdtree'
+let g:NERDTreeWinSize=26
+let g:NERDTreeShowHidden=1
+Plug 'cespare/vim-toml'
+Plug 'itchyny/vim-haskell-indent'
+Plug 'neovimhaskell/haskell-vim'
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
+call plug#end()
+
+" Settings for plugins
 
 " Required for operations modifying multiple buffers like rename.
 set hidden

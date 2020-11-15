@@ -1,17 +1,15 @@
 FROM alpine as builder
 
-RUN apk add --no-cache git gcc musl-dev neovim npm python3 python3-dev py3-pip
+RUN apk add --no-cache curl git gcc musl-dev neovim npm python3 python3-dev py3-pip
 
 WORKDIR /root/.config/nvim
 COPY dotfiles/init.vim .
 COPY dotfiles/iceberg.vim colors/
 
-WORKDIR /root/.cache/dein
-COPY dotfiles/plugins.toml .
-COPY dotfiles/lazy.toml .
-
-RUN pip3 install --user --no-cache-dir pynvim && \
-    nvim +UpdateRemotePlugins +qa --headless
+RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
+    pip3 install --user --no-cache-dir pynvim && \
+    nvim +PlugInstall +qa --headless
 
 WORKDIR /root/.config/coc/extensions
 ARG EXTRA_COC_PLUGINS=""

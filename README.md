@@ -1,12 +1,13 @@
 # neovim-docker
 
 A nvim excutable via Docker.
-Alpine base image, includes dein.nvim, coc.nvim, etc.
+Alpine base image, includes vim-plug, coc.nvim, etc.
 
 ## Features
 
  * Changeable uid/gid when running container
- * Plugins embedded (using dein.nvim)
+ * Plugins embedded (using vim-plug)
+ * Language Server Protocol Support (using coc.nvim)
 
 ## Requirements
 
