@@ -2,9 +2,8 @@ FROM alpine as builder
 
 RUN apk add --no-cache curl git gcc musl-dev neovim npm python3 python3-dev py3-pip
 
-WORKDIR /root/.config/nvim
-COPY dotfiles/init.vim .
-COPY dotfiles/iceberg.vim colors/
+COPY init.vim /root/.config/nvim/
+COPY iceberg.vim /root/.config/nvim/colors/
 
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
