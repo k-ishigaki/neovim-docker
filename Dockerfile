@@ -1,6 +1,6 @@
-FROM alpine as builder
+FROM alpine:3.13 as builder
 
-RUN apk add --no-cache curl git gcc musl-dev neovim npm python3 python3-dev py3-pip
+RUN apk add --no-cache curl git g++ gcc musl-dev neovim npm python3 python3-dev py3-pip
 
 COPY init.vim /root/.config/nvim/
 COPY iceberg.vim /root/.config/nvim/colors/
@@ -17,7 +17,7 @@ RUN echo '{"dependencies":{}}'> package.json && \
 
 RUN find ${HOME} | xargs -n 50 -P 4 chmod o+rwx
 
-FROM alpine
+FROM alpine:3.13
 LABEL maintainer="Kazuki Ishigaki<k-ishigaki@frontier.hokudai.ac.jp>"
 
 RUN apk add --no-cache git neovim neovim-doc npm python3 py3-pip shadow sudo
