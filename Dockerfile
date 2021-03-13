@@ -20,7 +20,11 @@ RUN find ${HOME} | xargs -n 50 -P 4 chmod o+rwx
 FROM alpine:3.13
 LABEL maintainer="Kazuki Ishigaki<k-ishigaki@frontier.hokudai.ac.jp>"
 
-RUN apk add --no-cache git neovim neovim-doc npm python3 py3-pip shadow sudo
+RUN apk add --no-cache git go neovim neovim-doc npm python3 py3-pip shadow sudo
+
+# install efm-langserver
+RUN go get github.com/mattn/efm-langserver
+ENV PATH $PATH:/root/go/bin
 
 COPY --from=builder /root /root
 
