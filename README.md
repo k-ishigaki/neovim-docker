@@ -1,6 +1,6 @@
 # neovim-docker
 
-A nvim excutable via Docker.
+A nvim executable via Docker.
 Alpine base image, includes vim-plug, coc.nvim, etc.
 
 ## Features
