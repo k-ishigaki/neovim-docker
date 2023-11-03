@@ -5,7 +5,6 @@ Alpine base image, includes vim-plug, coc.nvim, etc.
 
 ## Features
 
- * Changeable uid/gid when running container
  * Plugins embedded (using vim-plug)
  * Language Server Protocol Support (using coc.nvim)
 
@@ -16,5 +15,5 @@ Alpine base image, includes vim-plug, coc.nvim, etc.
 ## Run
 
 ```Shell
-docker run --rm -it -v $(pwd):/root/workspace -w /root/workspace -u $(id -u):$(id -g) ghcr.io/k-ishigaki/neovim-docker nvim ...
+docker run --rm -it ghcr.io/k-ishigaki/neovim-docker nvim
 ```
